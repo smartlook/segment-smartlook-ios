@@ -1,2 +1,1 @@
-# segment-smartlook-ios
-Smartlook integration into Segment
+# Smartlook integration into Segment
