@@ -7,11 +7,10 @@
 //
 
 #import "SLSegmentIntegration.h"
+#import <Analytics/SEGAnalyticsUtils.h>
 
 // MARK: - Segment Integration Object
 @interface SLSegmentIntegration : NSObject<SEGIntegration>
-
-- (void)track:(SEGTrackPayload *)payload;
 
 @end
 
@@ -24,6 +23,7 @@
     }
     [amendedProperties setValue:@"segment" forKey:@"sl-origin"];
     [Smartlook trackCustomEventWithName:payload.event props:amendedProperties];
+    SEGLog(@"SEGMENT SMARTLOOK: track\n  event:'%@'\n  properties:%@", payload.event, amendedProperties);
 }
 
 - (void)screen:(SEGScreenPayload *)payload {
@@ -36,6 +36,7 @@
     }
     [amendedProperties setValue:@"segment" forKey:@"sl-origin"];
     [Smartlook trackNavigationEventWithControllerId:payload.name type:SLNavigationTypeEnter];
+    SEGLog(@"SEGMENT SMARTLOOK: track\n  screen:'%@'\n  properties:%@", payload.name, amendedProperties);
 }
 
 - (void)reset {
@@ -45,15 +46,22 @@
 - (void)identify:(SEGIdentifyPayload *)payload {
     if (payload.userId.length > 0) {
         [Smartlook setUserIdentifier:payload.userId];
-    };
+    } else {
+        SEGLog(@"SEGMENT SMARTLOOK: cannot identify user with no userId");
+        return;
+    }
     [payload.traits enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
         [Smartlook setSessionPropertyValue:[NSString stringWithFormat:@"%@", obj] forName:key];
     }];
+    SEGLog(@"SEGMENT SMARTLOOK: identify\n  user:'%@'\n  properties:%@", payload.userId, payload.traits);
 }
 
 - (void)alias:(SEGAliasPayload *)payload {
     if (payload.theNewId.length > 0) {
         [Smartlook setUserIdentifier:payload.theNewId];
+        SEGLog(@"SEGMENT SMARTLOOK: alias\n  user:'%@'", payload.theNewId);
+    } else {
+        SEGLog(@"SEGMENT SMARTLOOK: cannot re-identify user with no id");
     }
 }
 
@@ -86,10 +94,13 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [Smartlook setupWithKey:smartlookAPIKey];
                 [Smartlook startRecording];
+                SEGLog(@"SEGMENT SMARTLOOK: did setup and start");
             });
         } else {
-            NSLog(@"Smartlook did not obtain API key from Segment. It will not be started by Segment.");
+            NSLog(@"SEGMENT SMARTLOOK: did not obtain API key from Segment. It will not be started by Segment. If you want setting up Smartlook manually, do it BEFORE setting up Segment.");
         }
+    } else {
+        SEGLog(@"SEGMENT SMARTLOOK: already running, no need to setup");
     }
     return [SLSegmentIntegration new];
 }
