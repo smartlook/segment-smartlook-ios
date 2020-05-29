@@ -43,9 +43,8 @@
 }
 
 - (void)identify:(SEGIdentifyPayload *)payload {
-    NSString *userId = payload.userId.length > 0 ? payload.userId : payload.anonymousId;
-    if (userId.length > 0) {
-        [Smartlook setUserIdentifier:userId];
+    if (payload.userId.length > 0) {
+        [Smartlook setUserIdentifier:payload.userId];
     };
     [payload.traits enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
         [Smartlook setSessionPropertyValue:[NSString stringWithFormat:@"%@", obj] forName:key];
