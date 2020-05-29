@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name             = "Segment-Smartlook"
-    s.version          = "0.1.0"
+    s.version          = "1.0.0"
     s.summary          = "Smartlook Integration for Analytics for iOS."
   
     s.description      = <<-DESC
@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
     s.homepage         = "https://github.com/smartlook/segment-smartlook-ios"
     s.license          = 'MIT'
     s.author           = { "Smartlook" => "support@smartlook.com" }
-    s.source           = { :git => "https://github.com/smartlook/segment-smartlook-ios.git", :branch => "devel" } #:tag => s.version.to_s }
+    s.source           = { :git => "https://github.com/smartlook/segment-smartlook-ios.git", :tag => s.version.to_s }
   
     s.platform     = :ios, '8.0'
     s.requires_arc = true
