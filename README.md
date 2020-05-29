@@ -80,6 +80,10 @@ Calls to `alias` method of Segment Analytics is routed to Smartlook's `setUserId
 
 This calls Smartlook's `resetSession(resetUser: true)`. For details, see the [full Smartlook documentation](https://smartlook.github.io/docs/sdk/ios/).
 
+### Stop and Start Recording
+
+Segment Analytics [does not share](https://segment.com/docs/connections/sources/catalog/libraries/mobile/ios/#disabling-data-collection-for-users-who-opt-out) calls to its `disable` and `enable` methods with associated tools. Thus, your app must call the corresponding Smartlook `stopRecording()` and `startRecording()` itself. 
+
 ## Full Smartlook Access
 
 By installing `Segment-Smartlook` library, you are given access to the full Smartlook capablities. See the [full Smartlook documentation](https://smartlook.github.io/docs/sdk/ios/) to understand what you can do and achieve with Smartlook. 
