@@ -4,6 +4,8 @@
 
 Smartlook integration to Segment is intentionally very lightweight. As Smartlook records more than just analytics data, it is not possible using just Segment "cloud" intergration, and Smartlook must be, via this integration library, added to your app.
 
+Examples given in this documentation are in Swift, however, both this integration layer and Smartlook istelf are programmed in ObjC and fully compatible with ObjC apps.
+
 ## Instalation
 
 In your `Podfile` add
