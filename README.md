@@ -46,7 +46,7 @@ import Segment_Smartlook
 
 //...
 
-Smartlook.setup(key: "YOUR_SMARTLOOK_API_KEY", options: [.renderingMode: .wireframe]);
+Smartlook.setup(key: "YOUR_SMARTLOOK_API_KEY", options: [.startNewSessionAndResetUser: true]);
 Smartlook.startRecording()
 
 let config = SEGAnalyticsConfiguration(writeKey: YOUR_SEGMENT_KEY)
