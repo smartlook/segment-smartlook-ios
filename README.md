@@ -14,7 +14,9 @@ pod 'Segment-Smartlook'
 
 ## Setup
 
-To simpy run Smartlook, add first your Smartlook app API key to your Smartlook Destination configuration in Segment (link).
+To simpy run Smartlook, add first your Smartlook app API key to your Smartlook Destination configuration in Segment (link). 
+
+To get your API key, [register with Smartlook](https://smartlook.com) (if you did not do it already) and then navigate to your app cofiguration there.
 
 Then, amend `SEGAnalytics` configuration:
 
@@ -72,6 +74,13 @@ Calls to `identify` method of Segment Analytics are translated to Smartlook's `s
 
 ### Alias
 
-Calls to `alias` method of Segment Analytics is routed to Smartlook's `
+Calls to `alias` method of Segment Analytics is routed to Smartlook's `setUserIdentifier` and simply renames the current user. To *logout* a user and start a new one, user `reset` method of Segment Analytics.
 
-Importing `Segment-Smartlook` gives you full access to advanced Smartlook capabilities.
+### Reset
+
+This calls Smartlook's `resetSession(resetUser: true)`. For details, see the [full Smartlook documentation](https://smartlook.github.io/docs/sdk/ios/).
+
+## Full Smartlook Access
+
+By installing `Segment-Smartlook` library, you are given access to the full Smartlook capablities. See the [full Smartlook documentation](https://smartlook.github.io/docs/sdk/ios/) to understand what you can do and achieve with Smartlook. 
+
