@@ -18,23 +18,23 @@
 @implementation SLSegmentIntegration
 
 - (void)track:(SEGTrackPayload *)payload {
-    NSMutableDictionary *ammendedProperties = [NSMutableDictionary new];
+    NSMutableDictionary *amendedProperties = [NSMutableDictionary new];
     if (payload.properties != nil) {
-        [ammendedProperties addEntriesFromDictionary:payload.properties];
+        [amendedProperties addEntriesFromDictionary:payload.properties];
     }
-    [ammendedProperties setValue:@"segment" forKey:@"sl-origin"];
-    [Smartlook trackCustomEventWithName:payload.event props:ammendedProperties];
+    [amendedProperties setValue:@"segment" forKey:@"sl-origin"];
+    [Smartlook trackCustomEventWithName:payload.event props:amendedProperties];
 }
 
 - (void)screen:(SEGScreenPayload *)payload {
-    NSMutableDictionary *ammendedProperties = [NSMutableDictionary new];
+    NSMutableDictionary *amendedProperties = [NSMutableDictionary new];
     if (payload.category) {
-        [ammendedProperties setObject:payload.category forKey:@"category"];
+        [amendedProperties setObject:payload.category forKey:@"category"];
     }
     if (payload.properties != nil) {
-        [ammendedProperties addEntriesFromDictionary:payload.properties];
+        [amendedProperties addEntriesFromDictionary:payload.properties];
     }
-    [ammendedProperties setValue:@"segment" forKey:@"sl-origin"];
+    [amendedProperties setValue:@"segment" forKey:@"sl-origin"];
     [Smartlook trackNavigationEventWithControllerId:payload.name type:SLNavigationTypeEnter];
 }
 
