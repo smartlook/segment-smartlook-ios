@@ -70,17 +70,21 @@ All events tracked by Segment Analytics, and their properties, are router to Sma
 
 All calls to `screen` method of Segment Analytics are translated as `trackNavigationEvent` in Smartlook.
 
-### Identify
+### Handling Users and Sessions
+
+Handling users and sessions differs from tool to tool. Smartlook follows Segment Analytics methods, however, to fully understand the sessions and users in Smartlook see the Smartlook native methods described the [full Smartlook documentation](https://smartlook.github.io/docs/sdk/ios/) and use them when appropriate.
+
+#### Identify
 
 Calls to `identify` method of Segment Analytics are translated to Smartlook's `setUserIdentifier` call, and the traits are transformed to user properties in Smartlook. 
 
-### Alias
+#### Alias
 
 Calls to `alias` method of Segment Analytics is routed to Smartlook's `setUserIdentifier` and simply renames the current user. To *logout* a user and start a new one, user `reset` method of Segment Analytics.
 
-### Reset
+#### Reset
 
-This calls Smartlook's `resetSession(resetUser: true)`. For details, see the [full Smartlook documentation](https://smartlook.github.io/docs/sdk/ios/).
+This calls Smartlook's `resetSession(resetUser: true)`.
 
 ### Stop and Start Recording
 
