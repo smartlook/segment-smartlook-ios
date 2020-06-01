@@ -2,13 +2,13 @@
 
 [Smartlook](https://smartlook.com) records users on websites and in mobile apps. With features that allow you to find useful information even in thousands of recordings in no time.
 
-Smartlook integration to Segment is intentionally very lightweight. As Smartlook records more than just analytics data, it is not possible using just Segment "cloud" intergration, and Smartlook must be, via this integration library, added to your app.
+Smartlook integration to Segment is intentionally very lightweight. As Smartlook records more than just analytics data, it is not possible using just Segment "cloud" integration, and Smartlook must be, via this integration library, added to your app.
 
-Examples given in this documentation are in Swift, however, both this integration layer and Smartlook istelf are programmed in ObjC and fully compatible with ObjC apps.
+Examples given in this documentation are in Swift, however, both this integration layer and Smartlook itself are programmed in ObjC and fully compatible with ObjC apps.
 
-## Instalation
+## Installation
 
-In your `Podfile` add
+In your `Podfile`, add
 
 ```ruby
 pod 'Segment-Smartlook'
@@ -16,9 +16,9 @@ pod 'Segment-Smartlook'
 
 ## Setup
 
-To simpy run Smartlook, add first your Smartlook app API key to your Smartlook Destination configuration in Segment (link). 
+To simply run Smartlook, add first your Smartlook app API key to your Smartlook Destination configuration in Segment (link). 
 
-To get your API key, [register with Smartlook](https://smartlook.com) (if you did not do it already) and then navigate to your app cofiguration there.
+To get your API key, [register with Smartlook](https://smartlook.com) (if you did not do it already) and then navigate to your app configuration there.
 
 Then, amend `SEGAnalytics` configuration:
 
@@ -38,7 +38,7 @@ This is sufficient to start Smartlook recording along the Segment.
 
 ## Advanced Setup
 
-If tou want or need using the advanced Smartlook setup, you should setup and start Smartlook manually **before** the Segment Analytics setup. Note that to track Segment Analytics event in Smartlook, Smartlook must be still added to the Segment configuration.
+If you want or need using the advanced Smartlook setup, you should setup and start Smartlook manually **before** the Segment Analytics setup. Note that to track Segment Analytics event in Smartlook, Smartlook must be still added to the Segment configuration.
 
 ```swift
 import Analytics
@@ -64,7 +64,7 @@ Please note that Smartlook supports only string values in properties, and does n
 
 ### Event Tracking
 
-All events tracked by Segment Analytics, and their properties, are router to Smartlook, too. It is valid for both explicite events created by the app, and implicite events that Segment creates for various system events. 
+All events tracked by Segment Analytics, and their properties, are router to Smartlook, too. It is valid for both explicit events created by the app, and implicit events that Segment creates for various system events. 
 
 ### Screen Tracking
 
@@ -92,5 +92,5 @@ Segment Analytics [does not share](https://segment.com/docs/connections/sources/
 
 ## Full Smartlook Access
 
-By installing `Segment-Smartlook` library, you are given access to the full Smartlook capablities. See the [full Smartlook documentation](https://smartlook.github.io/docs/sdk/ios/) to understand what you can do and achieve with Smartlook. 
+By installing `Segment-Smartlook` library, you are given access to the full Smartlook capabilities. See the [full Smartlook documentation](https://smartlook.github.io/docs/sdk/ios/) to understand what you can do and achieve with Smartlook. 
 
