@@ -46,9 +46,14 @@
 - (void)identify:(SEGIdentifyPayload *)payload {
     if (payload.userId.length > 0) {
         [Smartlook setUserIdentifier:payload.userId];
+    } else if (payload.anonymousId.length > 0) {
+        [Smartlook setUserIdentifier:payload.anonymousId];
     } else {
-        SEGLog(@"SEGMENT SMARTLOOK: cannot identify user with no userId");
+        SEGLog(@"SEGMENT SMARTLOOK: cannot identify user with no userId or anonymousId");
         return;
+    }
+    if (payload.userId.length == 0 && payload.anonymousId.length > 0) {
+        [Smartlook setSessionPropertyValue:[NSString stringWithFormat:@"%@", payload.anonymousId] forName:@"anonymous_id"];
     }
     [payload.traits enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
         [Smartlook setSessionPropertyValue:[NSString stringWithFormat:@"%@", obj] forName:key];
