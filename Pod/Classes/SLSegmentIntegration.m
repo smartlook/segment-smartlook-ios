@@ -27,16 +27,8 @@
 }
 
 - (void)screen:(SEGScreenPayload *)payload {
-    NSMutableDictionary *amendedProperties = [NSMutableDictionary new];
-    if (payload.category) {
-        [amendedProperties setObject:payload.category forKey:@"category"];
-    }
-    if (payload.properties != nil) {
-        [amendedProperties addEntriesFromDictionary:payload.properties];
-    }
-    [amendedProperties setValue:@"segment" forKey:@"sl-origin"];
     [Smartlook trackNavigationEventWithControllerId:payload.name type:SLNavigationTypeEnter];
-    SEGLog(@"SEGMENT SMARTLOOK: track\n  screen:'%@'\n  properties:%@", payload.name, amendedProperties);
+    SEGLog(@"SEGMENT SMARTLOOK: track\n  screen:'%@'", payload.name);
 }
 
 - (void)reset {
