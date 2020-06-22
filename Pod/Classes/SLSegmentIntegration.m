@@ -78,8 +78,7 @@
 }
 
 - (NSString *)key {
-#warning DEBUG Segment Integration Key used.
-    return @"Mixpanel";
+    return @"Smartlook";
 }
 
 - (id<SEGIntegration>)createWithSettings:(NSDictionary *)settings forAnalytics:(SEGAnalytics *)analytics {
